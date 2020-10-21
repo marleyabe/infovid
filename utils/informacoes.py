@@ -1,11 +1,14 @@
 from selenium import webdriver
 
+# abre a Google
 driver = webdriver.Chrome(executable_path='C:/Users/marle/OneDrive/Documentos/infovid/utils/chromedriver')
 driver.get("https://news.google.com/covid19/map?hl=pt-BR&mid=%2Fm%2F015fr&gl=BR&ceid=BR%3Apt-419")
 
+# Puxa do site da Google os Dados Brutos
 lugares_brutos = driver.find_elements_by_class_name('pcAJd')
 dados_brutos = driver.find_elements_by_css_selector('td.l3HOY')
 
+# listas vazias para receber os dados/nomes
 estados = []
 casos = []
 novos_casos = []
@@ -32,8 +35,6 @@ def pegar_informacoes(indice):
 
         return '{0}; {1}; {2}; {3}'.format(estados[indice], casos[indice], mortes[indice], novos_casos[indice])
 
-# for i in range(27):
-#     print(i+1, ' - ', pegar_informacoes(i).split(";"))
 
 driver.quit()
 

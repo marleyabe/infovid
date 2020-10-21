@@ -5,8 +5,10 @@ from utils.informacoes import pegar_informacoes
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
+        # lista para organizar os dados para o banco de dados
         dados_data = []
         
+        # Um loop para atualizar ou criar os dados dentro do banco de dados
         for i in range(27):
             dados = pegar_informacoes(i).split(";")
 

@@ -1,12 +1,341 @@
-<Html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>Infovid</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Work Sans');
+
+    body {
+        font-family: 'Work Sans';
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    h1, h2, p, a, label {
+        padding: 0;
+        margin: 0;
+    }
+
+    .main {
+        margin: auto;
+        max-width: 1104px;
+    }
+
+    .painel {
+        display: grid;
+        grid-template-columns: repeat(12 ,minmax(0,1fr));
+        grid-gap: 16px 32px;
+        width: 100%;
+    }
+
+    .logo {
+        text-align: center;
+        margin-top: 10px;
+    } 
+
+    .titulo-cima {
+        padding-top: 40px;
+        margin: auto;
+        max-width: 1104px;
+        padding-bottom: 40px;
+    }
+
+    #titulo-pequeno {
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    #titulo-grande {
+        font-size: 2em;
+    }
+
+    .main-wrapper {
+        border-radius: 8px;
+        border: 1px solid #dadce0;
+        grid-column: span 8;
+    }
+
+    .titulo-wrapper {
+        margin-bottom: 15px;
+    }
+
+    .titulo-wrapper p {
+        font-weight: 600;
+    }
+
+    .dados {
+        display: grid;
+        grid-template-columns: repeat(3,minmax(0,1fr));;
+        grid-gap: 24px;
+    }
+
+    .wrap h2 {
+        font-size: 1.9em;
+        font-weight: 500;
+    }
+
+    .wrap p {
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .wrap label {
+        font-size: 12px;
+    }
+
+    .center {
+        padding: 16px;
+    }
+    
+    #green {
+        color: green;
+    }
+
+    .painel-direita {
+        padding: 16px;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        grid-column: span 4;
+    }
+
+    .info-hora {
+        font-size: 0.75rem;
+        color: #5f6368;
+        padding-top: 8px;
+    }
+
+    .conteudo p {
+        font-size: 1rem;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #dadce0;
+    }
+
+    .perguntas {
+        display: grid;
+        grid-column-gap: 0;
+        grid-template-columns: repeat(12,minmax(0,1fr));
+    }
+
+    .perguntas article {
+        grid-column: span 12;
+    }
+
+    .perguntas article h4 {
+        margin: 0;
+        padding-bottom: 8px;
+    }
+
+    .perguntas article p {
+        font-size: 15px;
+        color: #5f6368;
+    }
+
+    .center p {
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .nomes {
+        border-bottom: 1px solid #e8eaed;
+    }
+
+    .cidades {
+        text-align: left;
+        min-width: 150px;
+        padding-left: 0;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .space {
+        min-width: 16px;
+        width: 16px;
+        height: 16px;
+        margin-left: 4px;
+    }
+
+    .itens {
+        border-bottom: 1px solid #e8eaed;
+        position: relative;
+        margin-right: 16px;
+    }
+
+    .itens-info {
+        text-align: left;
+        min-width: 150px;
+        padding-left: 0;
+        color: #202124;
+        font-size: 14px;
+        padding: 12px 0;
+    }
+
+    .itens-text {
+        display: flex;
+        box-sizing: inherit;
+    }
+
+    .itens-number {
+        color: #202124;
+        font-size: 14px;
+        padding: 12px 0;
+        text-align: left;
+    }
+
+    .table-text {
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .overflow {
+        overflow: auto;
+        max-height: 580px;
+    }
+
+    .painel-baixo {
+        display: grid;
+        width: 100%;
+    }
+
+    .margin-main {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+</style>
+<body>
+
+    <div class="logo">
+        <a href="#">logo</a>
+    </div>
+
+    <div class="titulo-cima">
+        <p id="titulo-pequeno">COVID19</p>
+        <p id="titulo-grande"><b>Dados</b> Coronavírus</p>
+    </div>
+
+    <div class="main">
+        <div class="painel">
+            <div class="main-wrapper">
+                <div class="center">
+                    <div class="titulo-wrapper">
+                        <p>Casos no DF</p>
+                    </div>
+
+                    {% for dado in dados %}
+                        {% if dado.estado == "Distrito Federal" %}
+                            <div class="dados">
+                                <div class="wrap" style="border-right: 1px solid #dadce0;">
+                                    <label>Casos confirmados</label>
+                                    <p>{{ dado.casos }}</p>
+                                </div>
+                                <div class="wrap" style="border-right: 1px solid #dadce0;">
+                                    <label>Mortes</label>
+                                    <p>{{ dado.mortes }}</p>
+                                </div>
+                                <div class="wrap">
+                                    <label>Novos Casos</label>
+                                    <p>{{ dado.novos_casos }}</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <div class="info-hora">Atualizado todo dia 00:00</div>
+                </div>
+                <div class="center">
+                    <p>Casos em outras cidades</p>
+                    <div class="dados-cidades">
+                        <div class="overflow">
+                            <table class="table">
+                                <thead class="">
+                                    <tr class="nomes">
+                                        <th class="cidades">
+                                            <div>
+                                                <div class="table-text">Estado</div>
+                                            </div>
+                                        </th>
+                                        <th class="cidades">
+                                            <div>
+                                                <div class="table-text">Casos</div>
+                                            </div>
+                                        </th>
+                                        <th class="cidades">
+                                            <div>
+                                                <div class="table-text">Mortes</div>
+                                            </div>
+                                        </th>
+                                        <th class="cidades">
+                                            <div>
+                                                <div class="table-text">Novos casos</div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for dado in dados %}
+                                        <tr class="itens">
+                                            <th class="itens-info">
+                                                <div class="itens-text">
+                                                    <div>{{ dado.estado }}</div>
+                                                </div>
+                                            </th>
+                                            <td class="itens-number">{{ dado.casos }}</td>
+                                            <td class="itens-number">{{ dado.mortes }}</td>
+                                            <td class="itens-number">{{ dado.novos_casos }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="painel-direita">
+                <div class="conteudo">
+                    <p>Dúvidas frequentes</p>
+                    <div class="perguntas">
+                        <article>
+                            <h4>O que é o coronavírus?</h4>
+                            <p>O coronavírus pertence a uma família de vírus que causa desde resfriados comuns a doenças mais graves. O novo coronavírus recebeu a denominação SARS-CoV-2 pela Organização Mundial da Saúde (OMS).</p>
+                        </article>
+                        <article>
+                            <h4>Qual o período de incubação?</h4>
+                            <p>De 2 a 14 dias, sendo mais comum em torno de 5 dias. Esse é o tempo que pode levar para o aparecimento dos primeiros sintomas, desde a infecção pelo coronavírus.</p>
+                        </article>
+                        <article>
+                            <h4>O que é pandemia?</h4>
+                            <p>Segundo a Organização Mundial de Saúde (OMS), uma pandemia é a disseminação mundial de uma nova doença e, geralmente, indica que uma epidemia se espalhou para dois ou mais continentes com transmissão sustentada de pessoa para pessoa. A pandemia para o Covid-19 foi declarada pela OMS no dia 11 de março de 2020.</p>
+                        </article>
+                        <article>
+                            <h4>O que são grupos de risco e quem faz parte?</h4>
+                            <p>São as pessoas acima dos 60 anos e aquelas com doenças crônicas preexistentes, como diabetes e doenças cardiovasculares. Essas pessoas não devem viajar nem frequentar shopping, cinema, shows ou nenhum outro local com aglomerações.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="main margin-main">
+        <div class="painel-baixo">
+            <div class="main-wrapper">
+                <div class="center">
+                    <p>Bot</p>
+                        dadawdadaw
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <head>
-        teste
-        {{ dados }}
-    </head>
-    <body>
-
-    </body>
-</Html>
+</body>
+</html>
