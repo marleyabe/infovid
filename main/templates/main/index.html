@@ -220,6 +220,106 @@
         height: 100%;
     }
 
+    header {
+        width: 90%;
+        max-width: 1240px;
+        margin: 0 auto;
+    }
+    .band {
+        text-align: center;
+        width: 90%;
+        max-width: 1104px;
+        justify-content: center;
+        margin: 0 auto;
+        display: flex;
+        margin-top: 30px;
+        margin-bottom: 20px;
+
+    }
+    @media (min-width: 30em) {
+        .band {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media (min-width: 60em) {
+        .band {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    .card {
+        background: white;
+        text-decoration: none;
+        color: #444;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+        position: relative;
+        top: 0;
+        transition: all 0.1s ease-in;
+        cursor: default;
+    }
+    .card:hover {
+        top: -2px;
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    }
+    .card article {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card h1 {
+        font-size: 20px;
+        margin: 0;
+        color: #333;
+    }
+    .card p {
+        flex: 1;
+        line-height: 1.4;
+    }
+    .card span {
+        font-size: 12px;
+        font-weight: bold;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 2em 0 0 0;
+    }
+    .card .thumb {
+        padding-bottom: 60%;
+        background-size: cover;
+        background-position: center center;
+    }
+    @media (min-width: 60em) {
+        .item-1 {
+            grid-column: 1 / span 2;
+        }
+        .item-1 h1 {
+            font-size: 24px;
+        }
+
+    #item-mid {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .item-card{
+        max-width: 354px;
+        min-width: 354px;
+    }
+
+    .item-card article{
+        border-top: 1px solid #dadce0;
+    }
+
+
+    .item-titulo {
+        padding-bottom: 15px;
+    }
+}
+
 </style>
 <body>
     {% load user_agents %}
@@ -352,37 +452,42 @@
         </div>
     </div>
 
-    <div class="main margin-main">
-        <div class="painel-baixo">
-            <div class="main-wrapper">
-                <div class="center">
-                    <p>Bot</p>
-                        Infovid é um bot que sabe lidar com dados brutos fornecidos pela Google para organizar e retornar como for requisitado. O bot está lidando com muitos dados e organizando para que seja melhor interpretado, assim como visto acima.
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="band">
 
-    <div class="main margin-main">
-        <div class="painel-baixo">
-            <div class="main-wrapper">
-                <div class="center">
-                    <p>Por que criar o Infovid?</p>
-                    Com o tema "Inteligência Artificial" decidimos criar um bot que saiba lidar e interpretar informações em uma quantidade massivas, assim retornando requisições legíveis, dessa maneira é possível compreender uma das funções de uma IA(Inteligência Artificial), interpretar dados de maneira eficiente.
-                </div>
-            </div>
+        <div class="item-card">
+            <a class="card">
+            <div class="thumb" style="background-image: url(https://cdn.discordapp.com/attachments/618915017898852353/768964707176284190/IA.png);"></div>
+            <article>
+                <h1 class="item-titulo">Inteligência Artificial</h1>
+                <p>Com o tema "Inteligência Artificial" decidimos criar um bot que saiba lidar e interpretar informações em uma quantidade massivas, assim retornando requisições legíveis, dessa maneira é possível compreender uma das funções de uma IA(Inteligência Artificial), interpretar dados de maneira eficiente.</p>
+            </article>
+            </a>
         </div>
-    </div>
+    
 
-    <div class="main margin-main">
-        <div class="painel-baixo">
-            <div class="main-wrapper">
-                <div class="center">
-                    <p>Quem somos?</p>
-                    Somos estudantes da turma da 2ª série do Ensino Médio do SESI de Taguatinga. Todo final de ano apresentamos um projeto trabalhado no decorrer do ano letivo no evento denominado Mostra de Arte, Ciências e Tecnologia. Esse ano de 2020 o tema foi: Inteligência Artificial em Tempos de Pandemia, que teve como objetivo buscar e oferecer informações sobre a COVID -19 utilizando recursos da Inteligência Artificial.
-                </div>
-            </div>
+    
+        <div id="item-mid" class="item-card">
+            <a class="card">
+            <div class="thumb" style="background-image: url(https://cdn.discordapp.com/attachments/618915017898852353/768964677866487838/Logo-Sesi.png);"></div>
+            <article>
+                <h1 class="item-titulo">Quem somos?</h1>
+                <p>Somos estudantes da turma da 2ª série do Ensino Médio do SESI de Taguatinga. Todo final de ano apresentamos um projeto trabalhado no decorrer do ano letivo no evento denominado Mostra de Arte, Ciências e Tecnologia. Esse ano de 2020 o tema foi: Inteligência Artificial em Tempos de Pandemia, que teve como objetivo buscar e oferecer informações sobre a COVID -19 utilizando recursos da Inteligência Artificial.</p>
+            </article>
+            </a>
         </div>
+    
+
+    
+        <div class="item-card">
+            <a class="card">
+            <div class="thumb" style="background-image: url(https://cdn.discordapp.com/attachments/618915017898852353/768964693607710730/bot.png);"></div>
+            <article>
+                <h1 class="item-titulo">Infovid</h1>
+                <p>Infovid é um bot que sabe lidar com dados brutos fornecidos pela Google para organizar e retornar como for requisitado. O bot está lidando com muitos dados e organizando para que seja melhor interpretado, assim como visto acima.</p>
+            </article>
+            </a>
+        </div>
+
     </div>
 
     {% endif %}
