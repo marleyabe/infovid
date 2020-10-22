@@ -224,6 +224,12 @@
             <h1>Este site não suporta celulares.</h1>
         </div>
     
+        
+    {% elif request.user_agent.is_touch_capable %}
+        <div class="celular">
+            <h1>Este site não suporta celulares.</h1>
+        </div>
+
     {% else %}
     
     <div class="logo">
