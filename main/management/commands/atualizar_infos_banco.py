@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
-from main.models import Dados
+from main.models import Dados, Config
 from utils.informacoes import pegar_informacoes
+from django.utils import timezone
+
 
 class Command(BaseCommand):
 
@@ -15,6 +17,4 @@ class Command(BaseCommand):
             dados_por_estado = "({0}, {1}, {2}, {3})".format(dados[0], dados[1], dados[2], dados[3])
 
             dado = Dados.objects.update_or_create(id=i+1, estado=dados[0], casos=dados[1], mortes=dados[2], novos_casos=dados[3])
-        
-            
-        
+        config = Config.objects.update_or_create(pk=1, datahora_atualizacao=timezone.now())

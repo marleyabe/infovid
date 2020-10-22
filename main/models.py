@@ -8,3 +8,6 @@ class Dados(models.Model):
     casos = models.CharField('Estado', max_length=200)
     mortes = models.CharField('Estado', max_length=200)
     novos_casos = models.CharField('Estado', max_length=200)
+
+class Config(models.Model):
+    datahora_atualizacao = models.DateTimeField('Data de atualização')

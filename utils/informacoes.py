@@ -1,7 +1,17 @@
-from selenium import webdriver
 
+from selenium import webdriver
+import platform
 # abre a Google
-driver = webdriver.Chrome(executable_path='C:/Users/marle/OneDrive/Documentos/infovid/utils/chromedriver')
+if platform.system() == 'Windows':
+	path = 'C:/Users/marle/OneDrive/Documentos/infovid/utils/chromedriver'
+elif platform.system() == 'Linux':
+	path = '/home/infovid/infovid/utils/chromedriver'
+
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--window-size=1920x1080')
+
+driver = webdriver.Chrome(executable_path=path, chrome_options=options)
 driver.get("https://news.google.com/covid19/map?hl=pt-BR&mid=%2Fm%2F015fr&gl=BR&ceid=BR%3Apt-419")
 
 # Puxa do site da Google os Dados Brutos
