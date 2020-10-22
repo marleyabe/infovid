@@ -123,4 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+PROJECT = 'infovid'
+
+home = Path.home()
+
+STATIC_ROOT = str(home/'static'/PROJECT/'static')
 STATIC_URL = '/static/'
