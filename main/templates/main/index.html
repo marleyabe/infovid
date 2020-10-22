@@ -208,9 +208,24 @@
         margin-bottom: 40px;
     }
 
+    .celular {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
 </style>
 <body>
+    {% load user_agents %}
 
+    {% if request.user_agent.is_mobile %}
+        <div class="celular">
+            <h1>Este site não suporta celulares.</h1>
+        </div>
+    
+    {% else %}
+    
     <div class="logo">
         <a href="#">logo</a>
     </div>
@@ -247,7 +262,7 @@
                         {% endif %}
                     {% endfor %}
 
-                    <div class="info-hora">Atualizado pela ultima vez em: {{ datahora }}</div>
+                    <div class="info-hora">Atualizado pela última vez em: {{ datahora }}</div>
                 </div>
                 <div class="center">
                     <p>Casos em outras cidades</p>
@@ -330,12 +345,12 @@
             <div class="main-wrapper">
                 <div class="center">
                     <p>Bot</p>
-                        dadawdadaw
+                        O Bot Infovid foi programado para lidar com dados brutos sobre a atual pandemia, para que possa puxar dados dos sites da Google, para analisar e organizar e mostra de forma legível e em tabela como visto acima.
                 </div>
             </div>
         </div>
     </div>
 
-
+    {% endif %}
 </body>
 </html>

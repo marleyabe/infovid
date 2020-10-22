@@ -2,10 +2,12 @@
 from selenium import webdriver
 import platform
 # abre a Google
-if platform.system() == 'Windows':
-	path = 'C:/Users/marle/OneDrive/Documentos/infovid/utils/chromedriver'
-elif platform.system() == 'Linux':
+
+if platform.system() == 'Linux':
 	path = '/home/infovid/infovid/utils/chromedriver'
+elif platform.system() == 'Windows':
+	path = 'C:/Users/marle/OneDrive/Documentos/infovid/utils/chromedriver.exe'
+
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
